@@ -6,7 +6,8 @@
 <xsl:template match="workflow">
 digraph "<xsl:value-of select="meta[@name='jira.description']"/>" {
 <xsl:for-each select="steps/step">
-node <xsl:value-of select="@id"/> [label="<xsl:value-of select="@name"/>"];</xsl:for-each>
+<xsl:value-of select="@id"/> [label="<xsl:value-of select="@name"/>"];
+</xsl:for-each>
 <xsl:for-each select="steps/step/actions/action">
 	<xsl:value-of select="../../@id"/> -> <xsl:value-of select="results/unconditional-result[1]/@step"/> [label="<xsl:value-of select="@name"/>"];
 </xsl:for-each>
